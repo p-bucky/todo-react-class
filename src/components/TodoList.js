@@ -40,11 +40,6 @@ export default class TodoList extends Component {
             Delete
           </button>
           <button
-            style={{ background: "yellow", border: "none", padding: "5px" }}
-          >
-            Edit
-          </button>
-          <button
             style={{ background: "green", border: "none", padding: "5px" }}
             onClick={() => {
               this.props.statusUpdate(this.props.id);

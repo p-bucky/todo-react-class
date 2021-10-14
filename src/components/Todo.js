@@ -10,6 +10,7 @@ export default class todo extends Component {
 
     this.addTodo = this.addTodo.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.statusUpdate = this.statusUpdate.bind(this);
   }
 
   currentTime() {
@@ -21,10 +22,12 @@ export default class todo extends Component {
 
   statusUpdate(id) {
     console.log("Status Update of Id: " + id);
-    const list = [...this.state.todo];
-    const remainder = list.filter((t) => t.id == id);
-    remainder.completed = true;
-    console.log(remainder);
+    this.setState((prevState) => {
+      const list = [...prevState.todo];
+      const index = list.findIndex((t) => t.id === id);
+      list[index].completed = true;
+      return { list };
+    });
   }
 
   handleRemove(id) {
